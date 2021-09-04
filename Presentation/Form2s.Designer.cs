@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbUnidadMedida = new System.Windows.Forms.ComboBox();
+            this.lblUnidadMedida = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -43,11 +45,14 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.btnBuscarF2 = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbUnidadMedida);
+            this.groupBox1.Controls.Add(this.lblUnidadMedida);
             this.groupBox1.Controls.Add(this.btnAceptar);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.txtNombre);
@@ -61,16 +66,41 @@
             this.groupBox1.Controls.Add(this.lblnombre);
             this.groupBox1.Controls.Add(this.lblDescripcion);
             this.groupBox1.Controls.Add(this.lblPrecio);
-            this.groupBox1.Location = new System.Drawing.Point(199, 100);
+            this.groupBox1.Location = new System.Drawing.Point(12, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(402, 250);
+            this.groupBox1.Size = new System.Drawing.Size(426, 287);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // cmbUnidadMedida
+            // 
+            this.cmbUnidadMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUnidadMedida.FormattingEnabled = true;
+            this.cmbUnidadMedida.Items.AddRange(new object[] {
+            "Unidad",
+            "Litros",
+            "Mililitros",
+            "Libras",
+            "Gramos",
+            "Miligramos"});
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(151, 225);
+            this.cmbUnidadMedida.Name = "cmbUnidadMedida";
+            this.cmbUnidadMedida.Size = new System.Drawing.Size(222, 21);
+            this.cmbUnidadMedida.TabIndex = 14;
+            // 
+            // lblUnidadMedida
+            // 
+            this.lblUnidadMedida.AutoSize = true;
+            this.lblUnidadMedida.Location = new System.Drawing.Point(30, 228);
+            this.lblUnidadMedida.Name = "lblUnidadMedida";
+            this.lblUnidadMedida.Size = new System.Drawing.Size(93, 13);
+            this.lblUnidadMedida.TabIndex = 13;
+            this.lblUnidadMedida.Text = "Unidad de medida";
+            // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(298, 216);
+            this.btnAceptar.Location = new System.Drawing.Point(298, 264);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 12;
@@ -176,7 +206,7 @@
             // 
             // btnBuscarF2
             // 
-            this.btnBuscarF2.Location = new System.Drawing.Point(199, 48);
+            this.btnBuscarF2.Location = new System.Drawing.Point(562, 12);
             this.btnBuscarF2.Name = "btnBuscarF2";
             this.btnBuscarF2.Size = new System.Drawing.Size(226, 23);
             this.btnBuscarF2.TabIndex = 9;
@@ -184,11 +214,19 @@
             this.btnBuscarF2.UseVisualStyleBackColor = true;
             this.btnBuscarF2.Click += new System.EventHandler(this.BtnBuscarF2_Click);
             // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(338, 15);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(100, 20);
+            this.txtBusqueda.TabIndex = 10;
+            // 
             // Form2s
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnBuscarF2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form2s";
@@ -196,6 +234,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -216,5 +255,8 @@
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnBuscarF2;
+        private System.Windows.Forms.ComboBox cmbUnidadMedida;
+        private System.Windows.Forms.Label lblUnidadMedida;
+        private System.Windows.Forms.TextBox txtBusqueda;
     }
 }

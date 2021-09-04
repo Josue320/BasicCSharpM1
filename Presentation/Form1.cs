@@ -37,41 +37,11 @@ namespace Presentation
             string dni, names, lastnames;
             decimal wage;
 
+            Rellenar();
             dni = txtDni.Text;
-
-            if (dni == "")
-            {
-                MessageBox.Show("Debe llenar la caja de texto con su Dni.",
-                                "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (dni is int)
-            {
-                MessageBox.Show($"Error, el dni:{txtDni.Text} no tiene el formato correcto.",
-                           "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else if (dni is decimal)
-            {
-                MessageBox.Show($"Error, el dni:{txtDni.Text} no tiene el formato correcto.",
-                      "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-      
-            names = txtNombres.Text;
-            if (names == "")
-            {
-                MessageBox.Show("Debe llenar la caja de texto con su Nombre.",
-                                "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             lastnames = txtApellidos.Text;
-            if (lastnames == "")
-            {
-                MessageBox.Show("Debe llenar la caja de texto con su Apellido.",
-                                "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+
+            names = txtNombres.Text;
             Verificacion(names, lastnames, dni);
             if (!decimal.TryParse(txtSalario.Text, out wage) || wage<0)
             {
@@ -80,25 +50,22 @@ namespace Presentation
                 return;
             }
 
-
-            if (Name.Length<=20 && dni.Length<=16 && lastnames.Length<=20)
+            Empleado emp = new Empleado()
             {
-                Empleado emp = new Empleado()
-                {
-                    Id = ++Count,
-                    Dni = dni,
-                    Names = names,
-                    Lastnames = lastnames,
-                    Wage = wage,
-                    AcademicLevel = (AcademicLevel )cmbAcademicLevel.SelectedIndex,
-                    Genero = (Genero )cmbGenero.SelectedIndex
+                Id = ++Count,
+                Dni = dni,
+                Names = names,
+                Lastnames = lastnames,
+                Wage = wage,
+                AcademicLevel = (AcademicLevel)cmbAcademicLevel.SelectedIndex,
+                Genero = (Genero)cmbGenero.SelectedIndex
 
-                };
+            };
 
-                empleadoModel.Add(emp);
+            empleadoModel.Add(emp);
 
 
-                MessageBox.Show($@"
+            MessageBox.Show($@"
                                 Id: {emp.Id}
                                 DNI: {emp.Dni}
                                 Nombres:{emp.Names}
@@ -107,11 +74,7 @@ namespace Presentation
                                Count: {empleadoModel.GetEmpleados().Length}
                                Nivel Academico : {emp.AcademicLevel}
                                 Genero : {emp.Genero}");
-                ClearTextboxes();
-            }
-        
-
-
+            ClearTextboxes();
 
         }
         private void ClearTextboxes()
@@ -124,14 +87,13 @@ namespace Presentation
         }
         public void Verificacion(string nombres, string apellidos, string dni)
         {
-
             if (nombres.Length > 20)
             {
                 MessageBox.Show($"Error, el nombre no puede tener mas de 20 caracteres",
                                 "Mensaje de error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-
+                return;
 
             }
             if (apellidos.Length > 20)
@@ -141,7 +103,7 @@ namespace Presentation
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-
+                return;
             }
             if (dni.Length > 16)
             {
@@ -149,11 +111,18 @@ namespace Presentation
                              "Mensaje de error",
                              MessageBoxButtons.OK,
                              MessageBoxIcon.Error);
-
-
+                return;
             }
         }
-
+        private void Rellenar()
+        {
+            if(txtApellidos.Text == "" || txtDni.Text == "" || txtNombres.Text== "" || txtSalario.Text=="")
+            {
+                MessageBox.Show("Debe rellenar todos los campos.",
+                               "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
         private void ButtonSalario_Click(object sender, EventArgs e)
         {
             PrintInformacionMesage($"El Salario Máximo es: {empleadoModel.GetSalarioMaximo()}");
@@ -188,6 +157,7 @@ namespace Presentation
         private void Button1_Click_1(object sender, EventArgs e)
         {
             Form2s f2 = new Form2s();
+            this.Hide();
             f2.Show();
         }
     }
