@@ -25,7 +25,26 @@ namespace Presentation
 
         private void BtnBuscarF2_Click(object sender, EventArgs e)
         {
-            
+            int id;
+            if (!Int32.TryParse(txtBusqueda.Text, out id) || id<=0)
+            {
+                MessageBox.Show($"Error, el Id:{txtId.Text} no tiene el formato correcto.",
+                                "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Producto p = new Producto();
+            p = productoModel.FindById(id);
+            if (p == null)
+            {
+                MessageBox.Show($"Error, el producto con Id:{txtBusqueda.Text} no existe.",
+                                "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                MostrarProducto(p);
+            }
+            ClearTextboxes();
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -35,7 +54,7 @@ namespace Presentation
             string nombre, descripcion;
             decimal precio;
             Rellenar();
-            if (!Int32.TryParse(txtId.Text, out id))
+            if (!Int32.TryParse(txtId.Text, out id) || id<=0)
             {
                 MessageBox.Show($"Error, el Id:{txtId.Text} no tiene el formato correcto.",
                                 "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -74,6 +93,7 @@ namespace Presentation
             };
             productoModel.AddProducto(p);
             MostrarProducto(p);
+            ClearTextboxes();
            
         }
         private void ClearTextboxes()
@@ -84,6 +104,7 @@ namespace Presentation
             txtDescripcion.Text = string.Empty;
             txtFecha.Text = string.Empty;
             txtCantidad.Text = string.Empty;
+            txtBusqueda.Text = string.Empty;
             txtId.Focus();
         }
         private void Rellenar()
@@ -107,5 +128,6 @@ namespace Presentation
                 MessageBoxIcon.Information);
         }
 
+        
     }
 }

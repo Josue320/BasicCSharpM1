@@ -22,7 +22,7 @@ namespace Infraestructura
             Np[Np.Length - 1] = producto;
             productos = Np;
         }
-
+        
         public bool Update(Producto producto)
         {
             bool success = false;
@@ -59,16 +59,22 @@ namespace Infraestructura
         public Producto FindById(int id)
         {
             int index = -1;
-            for (int i = 0; i < productos.Length; i++)
-            {
-                if (productos[i].Id == id)
+            if(productos != null){
+                for (int i = 0; i < productos.Length; i++)
                 {
-                    index = i;
-                    break;
+                    if (productos[i].Id == id)
+                    {
+                        index = i;
+                        break;
+                    }
                 }
-            }
 
-            return index < 0 ? null : productos[index];
+                return index < 0 ? null : productos[index];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public int GetIndex(Producto producto)

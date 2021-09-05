@@ -46,6 +46,7 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.btnBuscarF2 = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.lblId2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -206,7 +207,7 @@
             // 
             // btnBuscarF2
             // 
-            this.btnBuscarF2.Location = new System.Drawing.Point(562, 12);
+            this.btnBuscarF2.Location = new System.Drawing.Point(427, 9);
             this.btnBuscarF2.Name = "btnBuscarF2";
             this.btnBuscarF2.Size = new System.Drawing.Size(226, 23);
             this.btnBuscarF2.TabIndex = 9;
@@ -216,16 +217,26 @@
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.Location = new System.Drawing.Point(338, 15);
+            this.txtBusqueda.Location = new System.Drawing.Point(233, 12);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(100, 20);
+            this.txtBusqueda.Size = new System.Drawing.Size(152, 20);
             this.txtBusqueda.TabIndex = 10;
+            // 
+            // lblId2
+            // 
+            this.lblId2.AutoSize = true;
+            this.lblId2.Location = new System.Drawing.Point(163, 15);
+            this.lblId2.Name = "lblId2";
+            this.lblId2.Size = new System.Drawing.Size(16, 13);
+            this.lblId2.TabIndex = 11;
+            this.lblId2.Text = "Id";
             // 
             // Form2s
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblId2);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnBuscarF2);
             this.Controls.Add(this.groupBox1);
@@ -258,5 +269,6 @@
         private System.Windows.Forms.ComboBox cmbUnidadMedida;
         private System.Windows.Forms.Label lblUnidadMedida;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.Label lblId2;
     }
 }
